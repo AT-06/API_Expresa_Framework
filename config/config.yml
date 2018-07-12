@@ -1,0 +1,14 @@
+connection:
+    host: "10.28.109.113"
+    port: "4000"
+    rootPath: "/api/v1"
+mongodb:
+    mongo_host: "10.28.109.113"
+    mongo_user: "ariel411"
+    mongo_password: "secret123"
+    mongo_port: "14019"
+cassandradb:
+    cassandra_host: "10.28.109.113"
+    cassandra_user: "ariel411"
+    cassandra_password: "secret123"
+    cassandra_port: "41497"
