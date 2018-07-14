@@ -1,0 +1,19 @@
+{
+    "_id":"",
+    "name": "",
+    "birthDate":"",
+    "city":"",
+    "country":"",
+    "gender":"",
+    "primaryEmail":"",
+    "role":"",
+    "secondaryEmails":[
+
+    ],
+    "validated":true,
+    "actionTokens":{
+       "maximumTokens":100,
+       "usedTokens":0,
+       "_id": ""
+    }
+}
