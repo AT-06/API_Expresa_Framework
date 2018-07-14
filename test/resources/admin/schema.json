@@ -1,0 +1,32 @@
+{"/admin/summaries/general": {
+    "type" : "object",
+    "properties" : {
+      "_id" : {"type" : "string"},
+      "registeredUsers" : {"type" : "integer"},
+      "registeredSurveys" : {"type" : "integer"},
+      "activeSurveys" : {"type" : "integer"},
+      "createdAt" : {"type" : "string"}
+    }
+  },
+  "/admin/users/{id}": {
+    "type" : "object",
+    "properties" : {
+      "_id":{"type" : "string"},
+        "name": {"type" : "string"},
+        "birthDate":{"type" : "string"},
+        "city":{"type" : "string"},
+        "country":{"type" : "string"},
+        "gender":{"type" : "string"},
+        "primaryEmail": {"type" : "string"},
+        "role": {"type" : "string"},
+        "secondaryEmails":{"type" : "string"},
+        "validated": {"type" : "boolean"},
+        "actionTokens":{
+           "maximumTokens": {"type" : "integer"},
+           "usedTokens": {"type" : "integer"},
+           "_id": {"type" : "string"}
+        },
+      "validate": {"type" : "boolean"}
+    }
+  }
+}
