@@ -6,7 +6,7 @@ class BuildResponseExpectedTest(TestCase):
     def setUp(self):
         self.build = BuildResponseExpected()
 
-    def test_a(self):
+    def test_build_response_expected_basic_example(self):
         expected = {"_id": "9999999999", "user": "Escarleth", "age": 5, "numbers": {"uno": 1},
                     "prueba": {"dic": {"q1": "555"}},
                     "test": [{"a": 1, "d": {1: 1, "si": [2, {3: 3}]}, "x": {"b": 999}}]}
@@ -25,7 +25,7 @@ class BuildResponseExpectedTest(TestCase):
 
         self.assertEqual(self.build.build_response_json(expected, response), answer)
 
-    def test_create(self):
+    def test_build_response_expected_create_survey(self):
         expected = {
             "_id": "",
             "title": "Prueba",
@@ -175,3 +175,111 @@ class BuildResponseExpectedTest(TestCase):
                      "test ", "test2", "test3"]
                  }
         self.assertEqual(self.build.build_response_json(expected, response), build)
+
+    def test_get_post_response_contained(self):
+        post = {
+            "__v": 0,
+            "title": "TESTING",
+            "description": "TESTING",
+            "audience": 0,
+            "settings": {
+                "releaseDate": "2018-06-29T15:51:44.368Z",
+                "expirationDate": "2018-07-06T15:51:44.366Z",
+                "acceptMultipleAnswers": True,
+                "allowIncognitoResponses": False,
+                "showUsersEmail": False,
+                "requiresLogIn": False,
+                "_id": "5b4d021a3ee20b60baf563e3",
+                "allowedEmails": [],
+                "allowedDomains": []
+            },
+            "state": 0,
+            "creationDate": "2018-07-16T20:37:46.374Z",
+            "responseQuantity": 0,
+            "shortUrl": "",
+            "actionTokensCost": 8,
+            "fastpass": "11111",
+            "owner": "5b465bad3ee20b60baf55785",
+            "_id": "5b4d021a3ee20b60baf563dd",
+            "questions": [
+                {
+                    "text": "Name Question",
+                    "type": "checkbox",
+                    "required": False,
+                    "sequence": 0,
+                    "max": 0,
+                    "_id": "5b4d021a3ee20b60baf563de",
+                    "options": [
+                        {
+                            "label": "option1",
+                            "default": False,
+                            "sequence": 0,
+                            "_id": "5b4d021a3ee20b60baf563e2"
+                        },
+                        {
+                            "label": "option2",
+                            "default": False,
+                            "sequence": 1,
+                            "_id": "5b4d021a3ee20b60baf563e1"
+                        },
+                        {
+                            "label": "option3",
+                            "default": False,
+                            "sequence": 2,
+                            "_id": "5b4d021a3ee20b60baf563e0"
+                        },
+                        {
+                            "label": "option4",
+                            "default": False,
+                            "sequence": 3,
+                            "_id": "5b4d021a3ee20b60baf563df"
+                        }
+                    ]
+                }
+            ],
+            "tags": [
+                "test ",
+                "test2"
+            ]
+        }
+
+        get = {
+            "_id": "5b4d021a3ee20b60baf563dd",
+            "title": "TESTING",
+            "settings": {
+                "releaseDate": "2018-06-29T15:51:44.368Z",
+                "expirationDate": "2018-07-06T15:51:44.366Z",
+                "_id": "5b4d021a3ee20b60baf563e3",
+                "allowedDomains": []
+            },
+            "state": 0,
+            "creationDate": "2018-07-16T20:37:46.374Z",
+            "__v": 0,
+            "questions": [
+                {
+                    "text": "Name Question",
+                    "type": "checkbox",
+                    "_id": "5b4d021a3ee20b60baf563de",
+                    "options": [
+                        {
+                            "label": "option1",
+                            "_id": "5b4d021a3ee20b60baf563e2"
+                        },
+                        {
+                            "label": "option2",
+                            "_id": "5b4d021a3ee20b60baf563e1"
+                        },
+                        {
+                            "label": "option3",
+                            "_id": "5b4d021a3ee20b60baf563e0"
+                        },
+                        {
+                            "label": "option4",
+                            "_id": "5b4d021a3ee20b60baf563df"
+                        }
+                    ]
+                }
+            ],
+            "tags": ["test ", "test2"]
+        }
+        self.assertTrue(self.build.verify_get_post_response_jsons(post, get))
