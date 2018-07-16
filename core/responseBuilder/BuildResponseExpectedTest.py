@@ -7,19 +7,22 @@ class BuildResponseExpectedTest(TestCase):
         self.build = BuildResponseExpected()
 
     def test_a(self):
-        expected = {"id_user": "", "user": "Escarleth", "age": 5, "numbers": {"uno": 1},
+        expected = {"_id": "9999999999", "user": "Escarleth", "age": 5, "numbers": {"uno": 1},
                     "prueba": {"dic": {"q1": "555"}},
                     "test": [{"a": 1, "d": {1: 1, "si": [2, {3: 3}]}, "x": {"b": 999}}]}
 
         response = {"user": "Escar", "age": 15, "numbers": {"uno": 11, "dos": 2, "id": 89999}, "version": 7270,
+                    "_id": "11111111111111111",
                     "year": 12,
                     "prueba": {"dic": {"q1": "1", "id": 12345}},
                     "test": [{"a": 2, "d": {1: 2, "si": [2, {3: 4, 5: 5}]}, "x": {"b": 2}}]}
 
         answer = {"user": "Escarleth", "age": 5, "numbers": {"uno": 1, "dos": 2, "id": 89999}, "version": 7270,
+                  "_id": "11111111111111111",
                   "year": 12,
                   "prueba": {"dic": {"q1": "555", "id": 12345}},
                   "test": [{"a": 1, "d": {1: 1, "si": [2, {3: 3, 5: 5}]}, "x": {"b": 999}}]}
+
         self.assertEqual(self.build.build_response_json(expected, response), answer)
 
     def test_create(self):
@@ -70,8 +73,7 @@ class BuildResponseExpectedTest(TestCase):
                     "wasTyped": True
                 }],
             "tags": [
-                "test ",
-                "test2", "test3"
+                "test ", "test2", "test3"
             ],
             "shortUrl": "",
             "actionTokensCost": 10000000,
@@ -123,8 +125,7 @@ class BuildResponseExpectedTest(TestCase):
                             "sequence": 0,
                             "_id": "2222"
                         }]}],
-            "tags": [
-                "test ", "test2", "id"]
+            "tags": ["test ", "test2", "test3"]
         }
         build = {"__v": 0,
                  "title": "Prueba",
@@ -171,7 +172,6 @@ class BuildResponseExpectedTest(TestCase):
                                  "_id": "2222"
                              }]}],
                  "tags": [
-                     "test ",
-                     "test2", "id", "test3"]
+                     "test ", "test2", "test3"]
                  }
         self.assertEqual(self.build.build_response_json(expected, response), build)
