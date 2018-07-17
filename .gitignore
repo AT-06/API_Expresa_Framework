@@ -1,3 +1,9 @@
 /.idea/
 *.iml
 *.pyc
+*.pyd
+*.txt
+*.rst
+/venv/
+
+
