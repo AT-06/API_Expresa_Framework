@@ -1,0 +1,28 @@
+{
+    "secondaryEmails": [
+        {
+            "validated": false,
+            "email": "mariarenee.canqui3@gmail.com",
+            "nextResendDate": "2018-07-12T21:01:08.982Z"
+        },
+        {
+            "validated": false,
+            "email": "mariarenee.canqui4@gmail.com",
+            "nextResendDate": "2018-07-14T15:45:51.978Z"
+        }
+    ],
+    "actionTokens": {
+        "maximumTokens": 1000,
+        "usedTokens": 16,
+        "tokenId": "5b43d066d743a132a883d136"
+    },
+    "validated": true,
+    "role": "editor",
+    "primaryEmail": "mueller.arturo605@mailbox92.biz",
+    "gender": "male",
+    "country": "Bolivia",
+    "city": "Cochabamba",
+    "birthDate": "1994-10-25T04:00:00.000Z",
+    "userName": "Maria R",
+    "userId": "5b43d066d743a132a883d135"
+}
