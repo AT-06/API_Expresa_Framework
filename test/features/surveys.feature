@@ -44,7 +44,7 @@ Feature:Survey smoke tests
     When I perform a POST  at the service "/surveys"
     And I save the body response as "survey_response"
     Then I expect status code "201"
-    When I perform a DELETE  at the service "/surveys/{id-survey}"
+    When I perform a DELETE  at the service "/surveys/{survey_response._id}"
     Then I expect status code "200"
 
 #  Scenario Outline:Perform smoke test using GET method

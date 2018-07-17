@@ -16,11 +16,14 @@ class Utils:
         rootPaths = service.split("/")
         for i in range(1, len(rootPaths)):
             if re.match("^[{}]", rootPaths[i]):
-                build.append(Utils.find_element(Utils.responses.get(Utils.get_name()), "_id"))
+                build.append(Utils.find_element(Utils.responses.get(Utils.get_name()), Utils.key_element(rootPaths[i])))
             else:
                 build.append(rootPaths[i])
-        print("{}/{}".format(url, glue.join(build)))
         return "{}/{}".format(url, glue.join(build))
+
+    @staticmethod
+    def key_element(text):
+        return text[text.find(".") + 1:text.find("}")]
 
     @staticmethod
     def find_element(response, id):
