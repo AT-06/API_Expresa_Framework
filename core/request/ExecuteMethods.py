@@ -34,5 +34,3 @@ class ExecuteMethods:
 
     def get_body(self):
         return self.body
-
-

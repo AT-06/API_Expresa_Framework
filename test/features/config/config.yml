@@ -13,3 +13,4 @@ cassandradb:
     cassandra_user: "ariel411"
     cassandra_password: "secret123"
     cassandra_port: "41497"
+

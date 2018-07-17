@@ -1,5 +1,4 @@
 import ast
-import json
 
 from behave import given, when, then
 from compare import expect
@@ -15,6 +14,11 @@ def step_impl(context):
     print(context.url)
 
 
+@given(u'I add the header')
+def step_impl(context):
+    Utils.set_token(context.token)
+
+
 @given(u'I add the body ')
 def step_impl(context):
     ex.add_body(ast.literal_eval(context.text))
@@ -26,10 +30,16 @@ def step_impl(context, service, method):
     context.method = method
     context.end_point = Utils.build_end_point(context.url, context.service)
     context.response = ex.execute(context.method, context.end_point)
-    expect(context.response.status_code).to_equal(int(200))
+
+
+@when(u'I save the project "{name}"')
+def step_impl(context, name):
+    saves = Utils()
+    context.name = name
+    saves.save_response(context.name, context.response.json())
 
 
 @then(u'I can verify the status code {code}')
 def step_impl(context, code):
     context.code = code
-    expect(200).to_equal(int(code))
+    expect(context.response.status_code).to_equal(int(context.code))
