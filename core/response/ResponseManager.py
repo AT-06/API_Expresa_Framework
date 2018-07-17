@@ -3,7 +3,7 @@ import simplejson as json
 from jsonschema import exceptions
 from jsonschema import validate
 from core.utils.PropertiesManager import PropertiesManager
-from core.utils.Util import Util
+from core.database.utils.Util import Util
 
 class ResponseManager:
     def __init__(self, response):
@@ -58,4 +58,73 @@ class ResponseManager:
 
     def validate_response_equals_body(self, body):
         return sorted(body.items()) == sorted(self.response.items())
+
+a = ResponseManager()
+resp = {
+    "__v": 0,
+    "title": "test user 8/11/2018",
+    "description": "test from normal user brand",
+    "audience": 0,
+    "settings": {
+        "releaseDate": "2018-07-11T15:51:44.368Z",
+        "expirationDate": "2018-07-15T15:51:44.366Z",
+        "acceptMultipleAnswers": True,
+        "allowIncognitoResponses": False,
+        "showUsersEmail": False,
+        "requiresLogIn": False,
+        "_id": "5b47ad193ee20b60baf55f26",
+        "allowedEmails": [],
+        "allowedDomains": []
+    },
+    "state": 0,
+    "creationDate": "2018-07-12T19:33:44.988Z",
+    "responseQuantity": 0,
+    "shortUrl": "",
+    "actionTokensCost": 8,
+    "fastpass": "",
+    "owner": "5b47ac6d3ee20b60baf55efd",
+    "_id": "5b47ad183ee20b60baf55f20",
+    "questions": [
+        {
+            "text": "Survey 2 test by admin",
+            "type": "checkbox",
+            "required": False,
+            "sequence": 0,
+            "max": 0,
+            "_id": "5b47ad193ee20b60baf55f21",
+            "options": [
+                {
+                    "label": "option1",
+                    "default": False,
+                    "sequence": 0,
+                    "_id": "5b47ad193ee20b60baf55f25"
+                },
+                {
+                    "label": "option2",
+                    "default": False,
+                    "sequence": 1,
+                    "_id": "5b47ad193ee20b60baf55f24"
+                },
+                {
+                    "label": "option3",
+                    "default": False,
+                    "sequence": 2,
+                    "_id": "5b47ad193ee20b60baf55f23"
+                },
+                {
+                    "label": "option4",
+                    "default": False,
+                    "sequence": 3,
+                    "_id": "5b47ad193ee20b60baf55f22"
+                }
+            ]
+        }
+    ],
+    "tags": [
+        "test ",
+        "test2"
+    ]
+}
+a.response(resp)
+a.validate_schema_response("/surveys/create")
 
