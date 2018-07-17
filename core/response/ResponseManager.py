@@ -16,6 +16,7 @@ class ResponseManager:
         return schema
 
     def validate_schema_response(self, service):
+        validate(self.response, self.get_json_schema(service))
         try:
             validate(self.response, self.get_json_schema(service))
             return True
@@ -125,6 +126,6 @@ resp = {
         "test2"
     ]
 }
-a = ResponseManager(resp)
-print(a.validate_schema_response("/surveys/create"))
+#a = ResponseManager(resp)
+#print(a.validate_schema_response("/surveys/create"))
 

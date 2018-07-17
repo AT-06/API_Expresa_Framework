@@ -2,7 +2,7 @@
   "type": "object",
   "properties": {
     "__v": {
-      "type": "string"
+      "type": "integer"
     },
     "title": {
       "type": "string"
@@ -11,7 +11,7 @@
       "type": "string"
     },
     "audience": {
-      "type": "string"
+      "type": "integer"
     },
     "settings": {
       "type": "object",
@@ -26,13 +26,13 @@
           "type": "boolean"
         },
         "allowIncognitoResponses": {
-          "type": "string"
+          "type": "boolean"
         },
         "showUsersEmail": {
-          "type": "string"
+          "type": "boolean"
         },
         "requiresLogIn": {
-          "type": "string"
+          "type": "boolean"
         },
         "_id": {
           "type": "string"
@@ -52,13 +52,13 @@
       }
     },
     "state": {
-      "type": "string"
+      "type": "integer"
     },
     "creationDate": {
       "type": "string"
     },
     "responseQuantity": {
-      "type": "string"
+      "type": "integer"
     },
     "shortUrl": {
       "type": "string"
@@ -87,13 +87,13 @@
             "type": "string"
           },
           "required": {
-            "type": "string"
+            "type": "boolean"
           },
           "sequence": {
-            "type": "string"
+            "type": "integer"
           },
           "max": {
-            "type": "string"
+            "type": "integer"
           },
           "_id": {
             "type": "string"
@@ -107,10 +107,10 @@
                   "type": "string"
                 },
                 "default": {
-                  "type": "string"
+                  "type": "boolean"
                 },
                 "sequence": {
-                  "type": "string"
+                  "type": "integer"
                 },
                 "_id": {
                   "type": "string"
