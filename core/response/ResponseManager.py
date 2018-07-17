@@ -1,9 +1,9 @@
 import simplejson as json
+
 from jsonschema import exceptions
 from jsonschema import validate
-
 from core.utils.PropertiesManager import PropertiesManager
-
+from core.utils.Util import Util
 
 class ResponseManager:
     def __init__(self, response):
@@ -13,7 +13,7 @@ class ResponseManager:
         with open(self.get_schema_file(service), 'r') as f:
             schema_data = f.read()
         schema = json.loads(schema_data)
-        return schema[service]
+        return schema
 
     def validate_schema_response(self, service):
         try:
@@ -24,40 +24,38 @@ class ResponseManager:
 
     def get_schema_file(self, service):
         prop = PropertiesManager()
-        root = "{}/{}/{}"
         path = prop.get_property("schemas", "path")
-        file = prop.get_property("schemas", "name_file_schema")
-        return root.format(path,service.split("/")[1],file)
-
-    def validate_response_contains_body(self, body):
-
-        if type(self.response) is dict:
-            for (key, value) in self.response.items():
-
-                if type(self.response[key]) is dict:
-                    aux = self.response
-                    self.response = self.response[key]
-                    self.validate_response_contains_body(body)
-                    self.response = aux
-                if type(self.response[key]) is list:
-                    aux = self.response
-                    self.response = self.response[key]
-                    self.validate_response_contains_body(body)
-                    self.response = aux
-                else: print(key," : ",value)
+        return "{}{}.json".format(path,service)
 
 
-        if type(self.response) is list:
-            for item in self.response:
-                aux = self.response
-                self.response = item #item = json
-                self.validate_response_contains_body(body)
-                self.response = aux
+    def iterate_body(self, body):
+        util_list = Util()
+        util_list.iterate_json(self.response)
+        response_list = util_list.query_as_list
 
+        util_body = Util()
+        util_body.iterate_json(body)
+        body_list = util_body.query_as_list
+
+        json_aux = {}
+        for item_body in body_list:
+            for item_resp in response_list:
+                if item_body[1] == item_resp[1]:
+                    if item_body[2] == item_resp[2]:
+                        json_aux[item_body[0]+"_"+item_body[1]]= True
+                        break
+                    elif item_body[1] == "_id" and item_body[2] == "" or item_body[2] == "null":
+                        json_aux[item_body[0] + "_" + item_body[1]] = True
+                        break
+                    elif item_body[1] == "password":
+                        json_aux[item_body[0] + "_" + item_body[1]] = True
+                        break
+                    else: json_aux[item_body[0]+"_"+item_body[1]]= False
+
+        if False in json_aux.values():
+            return False
+        return True
 
     def validate_response_equals_body(self, body):
         return sorted(body.items()) == sorted(self.response.items())
-
-
-
 
