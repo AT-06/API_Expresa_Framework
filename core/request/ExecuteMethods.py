@@ -21,7 +21,7 @@ class ExecuteMethods:
         return requests.get(endPoint, headers=headers)
 
     def execute_post(self, endPoint, body, headers):
-        return requests.post(endPoint, headers=headers, data=body)
+        return requests.post(endPoint, headers=headers, json=body)
 
     def execute_put(self, endPoint, body, headers):
         return requests.put(endPoint, headers=headers, data=body)

@@ -1,42 +1,45 @@
 #noinspection CucumberUndefinedStep
 Feature: Get Survey
 
-#  Scenario:
-#    Given a survey
-#    And I add the body :
-#      """
-#      {
-#       "surveyCosts": {
-#           "survey": 25,
-#           "question": 19,
-#           "publish": 9
-#           }
-#      }
-#      """
-#    When I want to do a PUT on a "/constraints/survey"
-##    And I add the header:
-##    """
-##        {
-##        "Authorization": "token"
-##        }
-##    """
-#
-##      And I send the request
-#    Then I can verify the status code 200
-
-  Background: :
+  Background:
     Given a survey
     And I add the header
     And I add the body :
       """
       {
-        "name": "probandol",
-        "new_account_name": "Ariel411"
+         "_id":"",
+         "actionTokens":{
+            "maximumTokens":100,
+            "usedTokens":0
+         },
+         "birthDate":"1994-10-10",
+         "city":"cochabamba",
+         "country":"Bolivia",
+         "gender":"male",
+         "name":"Robert",
+         "password":"P@ssw0rd",
+         "primaryEmail":"kiolop@mailbox87789.de",
+         "role":"admin",
+         "secondaryEmails":[
+
+         ],
+         "validated":True
       }
       """
-    When I want to do a POST on a "/projects"
-    And I save the project "probandolo"
+    When I want to do a POST on a "/admin/users"
+    And I save the project "Ariel"
+#    Then I can verify the status code 201
 
+
+#  Scenario:
+#    Given a survey
+#    And I add the body :
+#      """
+#      {
+#      }
+#      """
+#    When I want to do a GET on a "/admin/users/{{USER_ID}}"
+#    Then I can verify the status code 200
 
   Scenario:
     Given a survey
@@ -46,17 +49,5 @@ Feature: Get Survey
 
       }
       """
-    When I want to do a GET on a "/projects/{{project_id}}"
+    When I want to do a DELETE on a "/admin/users/{{USER_ID}}"
     Then I can verify the status code 200
-
-  Scenario:
-    Given a survey
-    And I add the body :
-      """
-      {
-
-      }
-      """
-    When I want to do a DELETE on a "/projects/{project_id}"
-    Then I can verify the status code 204
-

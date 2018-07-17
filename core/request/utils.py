@@ -19,6 +19,7 @@ class Utils:
                 build.append(Utils.find_element(Utils.responses.get(Utils.get_name()), "_id"))
             else:
                 build.append(rootPaths[i])
+        print("{}/{}".format(url, glue.join(build)))
         return "{}/{}".format(url, glue.join(build))
 
     @staticmethod
@@ -44,8 +45,6 @@ class Utils:
 
     @staticmethod
     def build_header():
-        #     auth_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YjQ2NGM3NmQ5ODg5NjE5ZDY2MzY2YmEiLCJlbWFpbCI6InN3ZWxjaDU0MkBtYWlsYm94NTIuZ2EiLCJyb2xlIjoiYWRtaW4iLCJleHBpcmF0aW9uRGF0ZSI6IjIwMTgtMDctMjVUMjA6NTE6MjAuNzExWiIsImlhdCI6MTUzMTM0MjI4MH0.Dq-avWRpASCXPF-8rR4o3LF7By5qF4B38Miz8nUsSJs"
-        #     token = "Bearer {}".format(auth_token)
-        #     headers = {"Authorization": token}
-        headers = {"X-TrackerToken": Utils.token}
+        token = "Bearer {}".format(Utils.token)
+        headers = {"Authorization": token}
         return headers
