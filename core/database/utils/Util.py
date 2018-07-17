@@ -11,10 +11,10 @@ class Util:
         self.query_as_list = []
 
 
-    def query_response(self):
+    def query_response(self, file_name, table, field, primary_key):
         db = DBManager()
-        query_result = db.select_mongo_db("users", "_id", "5b43d066d743a132a883d135")
-        with open("../resources/users_get.json") as file:
+        query_result = db.select_mongo_db(table, field, primary_key)
+        with open("../resources/{}_get.json".format(file_name)) as file:
             json_file = file.read()
         self.template = json.loads(json_file)
         self.iterate_json(query_result)
@@ -71,6 +71,9 @@ class Util:
             else:
                 new_query.append(query_final[i])
         new_query.sort(key=lambda sublist: sublist[0])
+        new_query.sort(key=lambda sublist: sublist[1])
+        # print(new_query)
+        # print(response_final)
         return new_query
 
     def is_list_in_response(self, list, response):
@@ -95,7 +98,7 @@ class Util:
 
 
 util = Util()
-util.query_response()
+util.query_response("users", "users", "_id", "5b43d066d743a132a883d135")
 
 
 
