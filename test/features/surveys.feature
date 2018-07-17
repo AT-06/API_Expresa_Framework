@@ -1,12 +1,12 @@
 Feature:Survey smoke tests
 
-  Scenario: :
+  Scenario:
     Given I have the Authorization header
     And I add a body request
      """
      {
          "_id":"",
-         "title":"test 123",
+         "title":"test 123456",
          "description":"test",
          "audience":0,
          "settings":{
@@ -41,9 +41,26 @@ Feature:Survey smoke tests
          "fastpass":""
      }
      """
-    When I perform a POST  at the service "/surveys" :
+    When I perform a POST  at the service "/surveys"
     And I save the body response as "survey_response"
     Then I expect status code "201"
+    When I perform a DELETE  at the service "/surveys/{id-survey}"
+    Then I expect status code "200"
+
+#  Scenario Outline:Perform smoke test using GET method
+#    Given I have the Authorization header
+#    When I perform a GET  at the service "<Endpoint>"
+#    Then I expect status code "200"
+#
+#
+#    Examples:
+#      | Endpoint                                         |
+#      | /surveys                                         |
+#      | /surveys/{survey_response._id}                   |
+#      | /surveys/{survey_response._id}/edit              |
+#      | /surveys/{survey_response._id}/overview          |
+#      | /surveys/{survey_response._id}/results?type=json |
+#      | /surveys/{survey_response._id}/results?type=csv  |
 
 
 

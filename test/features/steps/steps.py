@@ -19,7 +19,7 @@ def step_impl(context):
     ex.add_body(ast.literal_eval(context.text))
 
 
-@when(u'I perform a {method}  at the service "{service}" :')
+@when(u'I perform a {method}  at the service "{service}"')
 def step_impl(context, method, service):
     context.service = service
     context.method = method
