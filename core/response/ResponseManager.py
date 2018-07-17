@@ -3,7 +3,7 @@ import simplejson as json
 from jsonschema import exceptions
 from jsonschema import validate
 from core.utils.PropertiesManager import PropertiesManager
-from core.database.utils.Util import Util
+from core.database.utils import Util
 
 class ResponseManager:
     def __init__(self, response):
@@ -59,7 +59,7 @@ class ResponseManager:
     def validate_response_equals_body(self, body):
         return sorted(body.items()) == sorted(self.response.items())
 
-a = ResponseManager()
+
 resp = {
     "__v": 0,
     "title": "test user 8/11/2018",
@@ -125,6 +125,6 @@ resp = {
         "test2"
     ]
 }
-a.response(resp)
-a.validate_schema_response("/surveys/create")
+a = ResponseManager(resp)
+print(a.validate_schema_response("/surveys/create"))
 

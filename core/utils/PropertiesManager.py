@@ -12,7 +12,7 @@ class PropertiesManager:
 
     def __init__(self):
         if PropertiesManager.__generic_data is None:
-            PropertiesManager.__generic_data = yaml.load(open('../../config/config.yml'))
+            PropertiesManager.__generic_data = yaml.load(open('../../test/features/config/config.yml'))
 
 
     def get_property(self, type, property):
