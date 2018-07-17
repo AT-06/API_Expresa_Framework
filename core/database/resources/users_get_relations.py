@@ -1,4 +1,7 @@
 relation = {
     "_id": "userId",
-    "name": "userName"
+    "name": "userName",
+    "actionTokens":{
+       "_id": "tokenId"
+    }
 }
