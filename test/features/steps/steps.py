@@ -29,12 +29,15 @@ def step_impl(context, method, service):
 
 @when(u'I save the body response as "{service_name}"')
 def step_impl(context, service_name):
-    saves = Utils()
     context.service_name = service_name
-    saves.save_response(context.service_name, context.response.json())
+    Utils.save_response(context.service_name, context.response.json())
 
 
 @then(u'I expect status code "{status_code}"')
 def step_impl(context, status_code):
     context.status_code = status_code
     expect(context.response.status_code).to_equal(int(context.status_code))
+
+@then(u'I get the "_id" as "$id" from ""')
+def step_impl(context):
+    print("********************************")
