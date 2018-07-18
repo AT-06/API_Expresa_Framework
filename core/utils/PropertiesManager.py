@@ -1,5 +1,6 @@
 import yaml
 from core.utils.PropertiesExpresa import PropertiesExpresa
+import os
 class PropertiesManager:
 
     __instance = None
@@ -12,12 +13,11 @@ class PropertiesManager:
 
     def __init__(self):
         if PropertiesManager.__generic_data is None:
-            PropertiesManager.__generic_data = yaml.load(open('../../test/features/config/config.yml'))
+            PropertiesManager.__generic_data = yaml.load(open(
+                os.path.normpath(os.path.join(__file__, '../../../') + '/test/features/config/config.yml')))
 
 
     def get_property(self, type, property):
-        logger = PropertiesExpresa().get_logger()
-        logger.debug("get property yml type: %s property: %s"% (type, property))
         return PropertiesManager.__generic_data[type][property]
 
 

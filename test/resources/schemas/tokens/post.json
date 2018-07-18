@@ -1,0 +1,9 @@
+{
+    "_id": {"type": "string"},
+    "__ttl": {"type": "string"},
+    "token": {"type": "string"},
+    "userId": {"type": "string"},
+    "email": {"type": "string"},
+    "nextResendDate": {"type": "string"},
+    "__v": {"type": "integer"}
+}
