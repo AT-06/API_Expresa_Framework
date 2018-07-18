@@ -1,6 +1,6 @@
 import requests
 
-from core.request.utils import Utils
+from core.request.Utils import Utils
 
 
 class ExecuteMethods:

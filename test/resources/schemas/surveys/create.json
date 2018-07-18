@@ -1,0 +1,131 @@
+{
+  "type": "object",
+  "properties": {
+    "__v": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "audience": {
+      "type": "integer"
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "releaseDate": {
+          "type": "string"
+        },
+        "expirationDate": {
+          "type": "string"
+        },
+        "acceptMultipleAnswers": {
+          "type": "boolean"
+        },
+        "allowIncognitoResponses": {
+          "type": "boolean"
+        },
+        "showUsersEmail": {
+          "type": "boolean"
+        },
+        "requiresLogIn": {
+          "type": "boolean"
+        },
+        "_id": {
+          "type": "string"
+        },
+        "allowedEmails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowedDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "state": {
+      "type": "integer"
+    },
+    "creationDate": {
+      "type": "string"
+    },
+    "responseQuantity": {
+      "type": "integer"
+    },
+    "shortUrl": {
+      "type": "string"
+    },
+    "actionTokensCost": {
+      "type": "number"
+    },
+    "fastpass": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "_id": {
+      "type": "string"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "sequence": {
+            "type": "integer"
+          },
+          "max": {
+            "type": "integer"
+          },
+          "_id": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "default": {
+                  "type": "boolean"
+                },
+                "sequence": {
+                  "type": "integer"
+                },
+                "_id": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

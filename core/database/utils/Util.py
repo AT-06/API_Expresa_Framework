@@ -14,7 +14,7 @@ class Util:
     def query_response(self, file_name, table, field, primary_key):
         db = DBManager()
         query_result = db.select_mongo_db(table, field, primary_key)
-        with open("../resources/{}_get.json".format(file_name)) as file:
+        with open("../../../resources/{}_get.json".format(file_name)) as file:
             json_file = file.read()
         self.template = json.loads(json_file)
         self.iterate_json(query_result)
@@ -97,8 +97,8 @@ class Util:
         return False
 
 
-util = Util()
-util.query_response("users", "users", "_id", "5b43d066d743a132a883d135")
+#util = Util()
+#util.query_response("users", "users", "_id", "5b43d066d743a132a883d135")
 
 
 

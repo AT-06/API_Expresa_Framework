@@ -4,7 +4,7 @@ from behave import given, when, then
 from compare import expect
 
 from core.request.ExecuteMethods import ExecuteMethods
-from core.request.utils import Utils
+from core.request.Utils import Utils
 
 ex = ExecuteMethods()
 
