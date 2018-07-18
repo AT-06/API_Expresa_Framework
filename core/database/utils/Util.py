@@ -1,7 +1,8 @@
 import simplejson as json
 from core.database.DBManager import *
 from bson.objectid import ObjectId
-from core.database.resources.users_get_relations import relation
+from core.database.resources.users_get_relations import relation as user_relation
+from core.database.resources.surveys_get_relation import relation as survey_relation
 from datetime import datetime
 
 class Util:
@@ -10,20 +11,22 @@ class Util:
         self.template = {}
         self.query_as_list = []
 
-
-    def query_response(self, file_name, table, field, primary_key):
-        db = DBManager()
-        query_result = db.select_mongo_db(table, field, primary_key)
-        with open("../../../resources/{}_get.json".format(file_name)) as file:
-            json_file = file.read()
-        self.template = json.loads(json_file)
+    def query_response(self, template, query_result, service):
+        # db = DBManager()
+        # query_result = db.select_mongo_db(table, field, primary_key)
+        # with open("../../../resources/{}_get.json".format(file_name)) as file:
+        #     json_file = file.read()
+        self.template = template
         self.iterate_json(query_result)
         query_final = self.query_as_list
         self.query_as_list = []
         self.iterate_json(self.template)
         response_final = self.query_as_list
         self.query_as_list = []
-        self.iterate_json(relation)
+        if service == "users":
+            self.iterate_json(user_relation)
+        elif service == "surveys":
+            self.iterate_json(survey_relation)
         relation_list = self.query_as_list
         return self.change_relation(query_final, response_final, relation_list)
 
@@ -72,9 +75,7 @@ class Util:
                 new_query.append(query_final[i])
         new_query.sort(key=lambda sublist: sublist[0])
         new_query.sort(key=lambda sublist: sublist[1])
-        # print(new_query)
-        # print(response_final)
-        return new_query
+        return new_query == response_final
 
     def is_list_in_response(self, list, response):
         for i in range(len(response)):
@@ -88,6 +89,10 @@ class Util:
                     list[2] = list[2][0:23] + "Z"
                 if response[i] == list:
                     return True
+            if list[2] == "true":
+                list[2] = bool(list[2])
+                if response[i] == list:
+                    return True
         return False
 
     def is_list_in_relation(self, list, relation):
@@ -97,8 +102,8 @@ class Util:
         return False
 
 
-#util = Util()
-#util.query_response("users", "users", "_id", "5b43d066d743a132a883d135")
+# util = Util()
+# util.query_response("users", "users", "_id", "5b43d066d743a132a883d135")
 
 
 
