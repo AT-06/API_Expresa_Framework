@@ -13,9 +13,9 @@ class MongoDBConnection(object):
             MongoDBConnection.__instance = object.__new__(cls)
         return MongoDBConnection.__instance
 
-    def __init__(self):
+    def __init__(self, connection):
         if MongoDBConnection.__client is None:
-            MongoDBConnection.__client = MongoClient('mongodb://manuel:Pass123$@10.28.109.108:14019/ixplora')
+            MongoDBConnection.__client = MongoClient(connection) # 'mongodb://manuel:Pass123$@10.28.109.108:14019/ixplora'
             MongoDBConnection.__db = MongoDBConnection.__client['ixplora']
 
     def get_connection(self):

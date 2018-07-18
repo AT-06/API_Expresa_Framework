@@ -2,7 +2,7 @@ import ast
 from behave import then
 from compare import expect
 from core.request.ExecuteMethods import ExecuteMethods
-from core.request.utils import Utils
+from core.request.Utils import Utils
 from core.database.DBManager import DBManager
 
 ex = ExecuteMethods()
@@ -15,7 +15,7 @@ def step_impl(context, field, field_value, table, where_field, where_value):
     context.table = table
     context.where_field = where_field
     context.where_value = where_value
-    db.update_mongo_db(context.table, {context.field: context.field_value}, context.where_field, Utils.get_response_value(context.where_value))
+    db.update_mongo_db(context.table, {context.field: context.field_value}, context.where_field, Utils.get_response_value(context.where_value), context.mongo_connection)
 
 @given(u'I use "{token}" for Authorization header')
 def step_impl(context, token):
