@@ -8,11 +8,13 @@ mongodb:
     mongo_user: "ariel411"
     mongo_password: "secret123"
     mongo_port: "14019"
+    mongo_db_name: "ixplora"
 cassandradb:
     cassandra_host: "10.28.109.113"
     cassandra_user: "ariel411"
-    cassandra_password: "secret123"
+    cassandra_password: "Secret123"
     cassandra_port: "41497"
+    cassandra_keyspace: "manuel_keyspace"
 schemas:
     path: "/test/resources/schemas"
 

@@ -7,12 +7,12 @@ class DBManager:
     """Class to connect and make queries to databases, mongodb - cassandra"""
 
 
-    def select_mongo_db(self, table, field, field_value):
+    def select_mongo_db(self, table, field, field_value, connection):
         """Method to select a single record from database.
         `table` is the table document from record will be retrieved.
         `field` is the field to filter records.
         `field_value` is the value to match."""
-        self.conn = MongoDBConnection()
+        self.conn = MongoDBConnection(connection)
         db = self.conn.get_connection()
         collections = db[table]
         result = collections.find_one({field: ObjectId(field_value)})

@@ -11,7 +11,7 @@ Feature: Users actionTokens endpoint smoke test
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"gwen.reinger635@mailbox92.biz",
+        "primaryEmail":"gwen.reinger885@mailbox92.biz",
         "role":"user",
         "secondaryEmails":[
 
@@ -30,7 +30,7 @@ Feature: Users actionTokens endpoint smoke test
     Given I add a body request
       """
       {
-        "email": "gwen.reinger635@mailbox92.biz",
+        "email": "gwen.reinger885@mailbox92.biz",
         "password": "Pass123$",
         "type":0
       }
@@ -38,9 +38,14 @@ Feature: Users actionTokens endpoint smoke test
     When I perform a POST  at the service "/users/login"
     And I save the body response as "user_token"
 
-  Scenario: Perform users smoke test for service users
+#  Scenario: Perform users smoke test for service users
+#    Given I use "user_token.authToken" for Authorization header
+#    When I perform a GET  at the service "/users"
+#    Then I expect status code "200"
+
+  Scenario: Perform users get validation with db for service users
     Given I use "user_token.authToken" for Authorization header
     When I perform a GET  at the service "/users"
+    And I save the body response as "users_response"
     Then I expect status code "200"
-
-
+    And I validate "users_response" of service "users" with table "users" where "_id" is "user_response._id"
