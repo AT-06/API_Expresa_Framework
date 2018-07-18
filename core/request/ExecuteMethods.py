@@ -24,7 +24,7 @@ class ExecuteMethods:
         return requests.post(endPoint, headers=headers, json=body)
 
     def execute_put(self, endPoint, body, headers):
-        return requests.put(endPoint, headers=headers, data=body)
+        return requests.put(endPoint, headers=headers, json=body)
 
     def execute_delete(self, endPoint, headers):
         return requests.delete(endPoint, headers=headers)
