@@ -44,6 +44,7 @@ Feature:Survey smoke tests
     When I perform a POST  at the service "/surveys"
     And I save the body response as "survey_response"
     Then I expect status code "201"
+    And I get the "_id" as "$id" from ""
     When I perform a DELETE  at the service "/surveys/{survey_response._id}"
     Then I expect status code "200"
 
