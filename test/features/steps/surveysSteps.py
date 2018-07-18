@@ -14,3 +14,8 @@ def step_impl(context, schema, response):
  context.schema = schema.lower()
  resp = ResponseManager(Utils.responses.get(response))
  expect(resp.validate_schema_response("{}/{}".format(context.service,context.schema))).to_equal(True)
+
+@then(u'I verify the "{response}" contains body values')
+def step_impl(context, response):
+ resp = ResponseManager(Utils.responses.get(response))
+ expect(resp.validate_response_contain_body(ex.get_body())).to_equal(True)
