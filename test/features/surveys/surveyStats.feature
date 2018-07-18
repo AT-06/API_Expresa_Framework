@@ -1,6 +1,6 @@
-Feature:Survey smoke tests
+Feature: Verify user account
 
-  Scenario:
+  Background: Survey creation
     Given I have the Authorization header
     And I add a body request
      """
@@ -45,5 +45,13 @@ Feature:Survey smoke tests
     And I save the body response as "survey_response"
     Then I expect status code "201"
     And I verify the "survey_response" has a valid POST schema
-    
+
+
+  Scenario: Get the stats of the survey created
+    Given I save "_id" as "$id_survey" from "survey_response"
+    When I perform a GET at the service  "/surveys/$id-survey/stats"
+    And I save the body response as "stats_response"
+    Then I expect status code "200"
+    And I verify the response has a valid POST schema
+
 
