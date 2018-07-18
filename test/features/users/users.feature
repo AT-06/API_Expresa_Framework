@@ -43,4 +43,9 @@ Feature: Users actionTokens endpoint smoke test
     When I perform a GET  at the service "/users"
     Then I expect status code "200"
 
-
+  Scenario: Perform users get validation with db for service users
+    Given I use "user_token.authToken" for Authorization header
+    When I perform a GET  at the service "/users"
+    And I save the body response as "users_response"
+    Then I expect status code "200"
+    And I validate "users_response" with db select

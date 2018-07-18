@@ -44,3 +44,14 @@ class Utils:
         token = "Bearer {}".format(Utils.token)
         headers = {"Authorization": token}
         return headers
+
+
+    @staticmethod
+    def get_response_value(name):
+        response_name, field = name.split(".")
+        return Utils.responses[response_name][field]
+
+    @staticmethod
+    def get_response_nested_value(name):
+        response_name, parent, field = name.split(".")
+        return Utils.responses[response_name][parent][field]
