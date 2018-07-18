@@ -15,7 +15,6 @@ def step_impl(context, field, field_value, table, where_field, where_value):
     context.table = table
     context.where_field = where_field
     context.where_value = where_value
-    # saves = Utils()
     db.update_mongo_db(context.table, {context.field: context.field_value}, context.where_field, Utils.get_response_value(context.where_value))
 
 @given(u'I use "{token}" for Authorization header')
