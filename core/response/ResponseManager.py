@@ -1,9 +1,12 @@
 import simplejson as json
 
+from core.database.utils.Util import Util
 from jsonschema import exceptions
 from jsonschema import validate
 from core.utils.PropertiesManager import PropertiesManager
-from core.database.utils import Util
+
+from core.responseBuilder.BuildResponseExpected import BuildResponseExpected
+
 import os
 class ResponseManager:
     def __init__(self, response):
@@ -32,13 +35,16 @@ class ResponseManager:
         return "{}{}.json".format(path,service)
 
 
-    def iterate_body(self, body):
-        Util.iterate_json(self.response)
-        response_list = Util.query_as_list
+    def validate_response_contain_body(self, body):
+        builder = BuildResponseExpected()
+        body = builder.build_response_json(body, self.response)
+        response_iterate = Util()
+        response_iterate.iterate_json(self.response)
+        response_list = response_iterate.query_as_list
 
-
-        Util.iterate_json(body)
-        body_list = Util.query_as_list
+        body_iterate = Util()
+        body_iterate.iterate_json(body)
+        body_list = body_iterate.query_as_list
 
         json_aux = {}
         for item_body in body_list:
