@@ -45,23 +45,5 @@ Feature:Survey smoke tests
     And I save the body response as "survey_response"
     Then I expect status code "201"
     And I verify the "survey_response" has a valid POST schema
-
-#  Scenario Outline:Perform smoke test using GET method
-#    Given I have the Authorization header
-#    When I perform a GET  at the service "<Endpoint>"
-#    Then I expect status code "200"
-#
-#
-#    Examples:
-#      | Endpoint                                         |
-#      | /surveys                                         |
-#      | /surveys/{survey_response._id}                   |
-#      | /surveys/{survey_response._id}/edit              |
-#      | /surveys/{survey_response._id}/overview          |
-#      | /surveys/{survey_response._id}/results?type=json |
-#      | /surveys/{survey_response._id}/results?type=csv  |
-
-
-
-
+    
 

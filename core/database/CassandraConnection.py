@@ -14,8 +14,8 @@ class CassandraConnection:
 
     def __init__(self):
         if CassandraConnection.__session is None:
-            auth_provider = PlainTextAuthProvider(username='manuel', password='Pass123$')
-            cluster = Cluster(["10.28.109.108"], auth_provider=auth_provider, port=41497)
+            auth_provider = PlainTextAuthProvider(username = 'manuel', password = 'Pass123$')
+            cluster = Cluster(["10.28.109.108"], auth_provider = auth_provider, port = 41497)
             CassandraConnection.__session = cluster.connect()
             CassandraConnection.__session.set_keyspace('manuel_keyspace')
 
