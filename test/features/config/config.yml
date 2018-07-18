@@ -14,6 +14,6 @@ cassandradb:
     cassandra_password: "secret123"
     cassandra_port: "41497"
 schemas:
-    path: "../../test/resources/schemas"
+    path: "/test/resources/schemas"
 
 

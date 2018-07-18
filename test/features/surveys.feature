@@ -45,5 +45,6 @@ Feature:Survey smoke tests
     And I save the body response as "survey_response"
     Then I expect status code "201"
     And I verify the "survey_response" has a valid POST schema
+    And I verify the "survey_response" contains body values
     
 
