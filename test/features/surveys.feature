@@ -46,5 +46,6 @@ Feature:Survey smoke tests
     Then I expect status code "201"
     And I verify the "survey_response" has a valid POST schema
     And I verify the "survey_response" contains body values
+    And I validate "survey_response" of service "surveys" with table "surveys" where "_id" is "survey_response._id"
     
 
