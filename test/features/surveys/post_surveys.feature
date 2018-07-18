@@ -44,7 +44,7 @@ Feature: Verify the creation of a survey
      """
     When I perform a POST  at the service "/surveys"
     And I save the body response as "response"
-    And I get the "id" as "$_id"
+    And I get the "id" as "_id"
     Then I expect status code "201"
     And I verify the "response" has a valid POST schema
     And I verify the "response" contains values sent on Request

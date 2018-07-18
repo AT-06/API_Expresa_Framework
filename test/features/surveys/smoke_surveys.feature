@@ -43,7 +43,7 @@ Feature:Survey smoke tests
      """
     When I perform a POST  at the service "/surveys"
     And I save the body response as "survey_response"
-    And I get the "id" as "$_id"
+    And I get the "id" as "_id"
     Then I expect status code "201"
 
   @delete_item
