@@ -44,3 +44,10 @@ class Utils:
         token = "Bearer {}".format(Utils.token)
         headers = {"Authorization": token}
         return headers
+
+    @staticmethod
+    def build_body(body, id):
+        if body["_id"] != "":
+            body["_id"] = id
+            return body
+        return body
