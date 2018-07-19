@@ -1,4 +1,4 @@
-@users
+@Constraints
 Feature: Users creation CRUD
    Background: User creation
     Given I have the Authorization header
@@ -48,15 +48,15 @@ Feature: Users creation CRUD
    Scenario: Put cost of last survey
       Given I have the Authorization header
         And I add a body request
-        """
-        {
-	      "surveyCosts":{
+         """
+         {
+	        "surveyCosts":{
 	          "survey": 5,
 	          "question": 6,
 	          "publish": 7
-	      }
-        }
-        """
+	        }
+         }
+         """
       When I perform a PUT  at the service "/constraints/survey"
       Then I expect status code "200"
 
@@ -66,11 +66,11 @@ Feature: Users creation CRUD
         And I add a body request
         """
         {
-	      "surveyCosts":{
+	        "surveyCosts":{
 	          "survey": 5,
 	          "question": 6,
 	          "publish": 7
-	      }
+	        }
         }
         """
     When I perform a PUT  at the service "/constraints/survey"

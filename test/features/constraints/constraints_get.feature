@@ -1,4 +1,4 @@
-@users
+@Constraints
 Feature: Users creation CRUD
    Background: User creation
     Given I have the Authorization header
