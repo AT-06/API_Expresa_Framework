@@ -43,11 +43,12 @@ Feature: Get surveys
      """
     When I perform a POST  at the service "/surveys"
     And I save the body response as "survey_response"
-    And I get the "id" as "$_id"
+    And I get the "id" as "_id"
     Then I expect status code "201"
 
+  @CRUD @delete_item
   Scenario: Gets survey
-    When I perform a GET  at the service "/surveys/{survey_response._id}"
+    When I perform a GET  at the service "/surveys/{survey_response._id}/edit"
     And I save the body response as "response"
-    Then I expect status code "200
-    And I validate "response" of service "surveys" with table "surveys" where "_id" is "survey_response._id"
+    Then I expect status code "200"
+    And I validate "response" of service "surveys" with table "surveys" where "_id" is "response._id"

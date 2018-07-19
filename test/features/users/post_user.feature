@@ -7,7 +7,7 @@ Feature: Users creation CRUD
       And I add a body request
       """
       {
-        "_id":"null",
+        "_id":"",
         "name": "Test Admin JM",
         "birthDate":"1994-10-25T04:00:00.000Z",
         "city":"Cochabamba",

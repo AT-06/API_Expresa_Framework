@@ -1,3 +1,4 @@
+import ast
 
 from behave import then
 from compare import expect
@@ -35,3 +36,9 @@ def step_impl(context, service):
     context.end_point_get = Utils.build_end_point(context.url, service)
     context.get_response = ex.execute('GET', context.end_point_get).json()
     expect(build.verify_get_post_response_jsons(context.get_response, context.response.json())).to_be_truthy()
+
+
+@then(u'I verify the response "{response}" with the following body')
+def step_impl(context, response):
+    resp = ResponseManager(Utils.responses.get(response))
+    expect(resp.validate_response_contain_body(ast.literal_eval(context.text))).to_be_truthy()

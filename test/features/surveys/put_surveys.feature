@@ -91,6 +91,6 @@ Feature: Verify the survey updated
     When I perform a PUT  at the service "/surveys/{survey_response._id}"
     And I save the body response as "response"
     Then I expect status code "200"
-    And I verify the "response" has a valid POST schema
+    And I verify the "response" has a valid PUT schema
     And I verify the "response" contains values sent on Request
     And I verify the "response" is contained in get_response at "/surveys/{survey_response._id}/edit" service
