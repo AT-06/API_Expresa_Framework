@@ -71,8 +71,8 @@ Feature: Users creation CRUD
     Examples: Empty
       | NAME         | BIRTHDATE                  | GENDER   | PASSWORD | PRIMARYEMAIL          | ROLE    | VALIDATED | MAXTOKENS | USEDTOKENS |
       | ""           | ""                         | "female" | ""       | ""                    | "admin" | False     | 1         | 1          |
-      | "Valid Name" | ""                         | "female" | "123$    | "knowmauikl@mail.com" | "users" | False     | 1         | 1          |
-      | "Valid Name" | "1994-10-30T04:00:00.000Z" | ""       | "89777$  | "knowmauikl@mail.com" | "admin" | False     | 1         | 1          |
+      | "Valid Name" | ""                         | "female" | "123$"   | "knowmauikl@mail.com" | "users" | False     | 1         | 1          |
+      | "Valid Name" | "1994-10-30T04:00:00.000Z" | ""       | "89777$" | "knowmauikl@mail.com" | "admin" | False     | 1         | 1          |
       | "Valid Name" | "1994-10-30T04:00:00.000Z" | "male"   | ""       | "knowmauikl@mail.com" | "users" | True      | 0         | 0          |
       | "Valid Name" | "1994-10-30T04:00:00.000Z" | "male"   | "6464$A" | ""                    | "admin" | True      | 0         | 1          |
       | "Valid Name" | "1994-10-30T04:00:00.000Z" | "male"   | "6464$A" | "kno.8549kl@mail.com" | ""      | True      | 0         | 1          |
