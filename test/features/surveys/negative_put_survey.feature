@@ -1,4 +1,4 @@
-Feature: Verify the survey updated
+Feature: Verify that is not possible update a survey with invalid data
 
   Background:
     Given I have the Authorization header
@@ -46,8 +46,8 @@ Feature: Verify the survey updated
     And I get the "id" as "_id"
     Then I expect status code "201"
 
-  @CRUD @delete_item
-  Scenario Outline: Create a survey invalid inputs
+  @negative @delete_item
+  Scenario Outline: Update survey invalid data
     Given I have the Authorization header
     And I add a body request
      """

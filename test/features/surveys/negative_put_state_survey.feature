@@ -1,4 +1,5 @@
-Feature: Verify the survey updated
+Feature: Verify that is not possible update update a survey when was open(state1)
+  closed(state 2)
 
   Background:
     Given I have the Authorization header
@@ -46,8 +47,8 @@ Feature: Verify the survey updated
     And I get the "id" as "_id"
     Then I expect status code "201"
 
-  @CRUD @delete_item
-  Scenario Outline:Update a new survey
+  @negative @delete_item
+  Scenario Outline:Update a survey when was opened
     Given I have the Authorization header
     And I add a body request
      """
