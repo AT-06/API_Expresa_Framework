@@ -35,8 +35,5 @@ def step_impl(context, service_name):
     context.service_name = service_name
     Utils.save_response(context.service_name, context.response.json())
 
-@then(u'I expect status code "{status_code}"')
-def step_impl(context, status_code):
-    context.status_code = status_code
-    expect(context.response.status_code).to_equal(int(context.status_code))
+
 
