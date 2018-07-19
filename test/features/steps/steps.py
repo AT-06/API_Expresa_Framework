@@ -11,6 +11,12 @@ def step_impl(context):
     Utils.set_token(context.token)
 
 
+@given(u'I have an invalid "{Invalid_Token}" header')
+def step_impl(context, Invalid_Token):
+    context.Invalid_Token = Invalid_Token
+    Utils.set_token(context.Invalid_Token)
+
+
 @given(u'I add a body request')
 def step_impl(context):
     body_evaluate = Utils.build_body(ast.literal_eval(context.text), context._id)
@@ -34,6 +40,3 @@ def step_impl(context, value):
 def step_impl(context, service_name):
     context.service_name = service_name
     Utils.save_response(context.service_name, context.response.json())
-
-
-
