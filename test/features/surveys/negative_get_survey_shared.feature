@@ -1,3 +1,55 @@
-Feature: Not GET a  Survey With Invalid Inputs
-  It could not be possible to create a survey with valid
-  input from the body
+Feature: Not GET a Survey shared with using Invalid Inputs
+  It could not be possible to get a /surveys/{{id-survey}}/sharedWith
+  service with invalid inputs
+
+  Background:
+    Given I have the Authorization header
+    And I add a body request
+     """
+     {
+         "_id":"",
+         "title":"Shared with someone",
+         "description":"test",
+         "audience":0,
+         "settings":{
+            "releaseDate":"2018-06-29T15:51:44.368Z",
+            "expirationDate":"2018-07-06T15:51:44.366Z",
+            "allowedDomains":[],
+            "acceptMultipleAnswers":True,
+            "allowIncognitoResponses":False,
+            "showUsersEmail":False,
+            "allowedEmails":[],
+            "requiresLogIn":False
+         },
+         "state":0,
+         "creationDate":"2018-06-29T15:51:44.368Z",
+         "responseQuantity":0,
+         "questions":[
+            {
+               "_id":"",
+               "text":"Name Question",
+               "type":"signature",
+               "required":False,
+               "sequence":0,
+               "valid":True,
+               "max":0,
+               "options":[],
+               "wasTyped":True
+            }
+         ],
+         "tags":[ ],
+         "shortUrl":"",
+         "actionTokensCost":0,
+         "fastpass":""
+     }
+     """
+    When I perform a POST  at the service "/surveys"
+    And I save the body response as "survey_response"
+    And I get the "id" as "_id"
+    Then I expect status code "201"
+
+  Scenario Outline:
+    Given
+
+    Examples:
+      |  |

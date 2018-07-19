@@ -1,6 +1,3 @@
-
-
-
 Feature: Not Create Survey With Invalid Inputs
   It could not be possible to create a survey with valid
   input from the body
@@ -49,6 +46,14 @@ Feature: Not Create Survey With Invalid Inputs
     When I perform a POST  at the service "/surveys"
     And I save the body response as "survey_response"
     Then I expect status code "400"
+    And I verify the response "survey_response" with the following body
+    """
+    {
+      "statusCode": 400,
+      "details": "Invalid request",
+      "payload": None
+    }
+    """
 
     Examples: Empty
       | TITLE           | RELEASE_DATE               | MULTIPLE_ANSWERS | STATE | RESPONSE_QUANTITY | QUESTION_NAME       | QUESTION_TYPE | TOKEN_COST |
@@ -84,8 +89,6 @@ Feature: Not Create Survey With Invalid Inputs
       | "Survey Test" | "2018-06-29T15:51:44.368Z" | True             | 0     | 1                 |                   | "combobox"    | "Test"     |
       | "Survey Test" | "2018-06-29T15:51:44.368Z" | False            | 0     | 1                 | "Popular Cities?" |               | "Test"     |
       | "Survey Test" | "2018-06-29T15:51:44.368Z" | True             | 0     | 1                 | "Popular Cities?" | "combobox"    |            |
-
-
 
 
 
