@@ -10,6 +10,10 @@ ex = ExecuteMethods()
 def step_impl(context):
     Utils.set_token(context.token)
 
+@given(u'I have the Authorization header for administrator')
+def step_impl(context):
+    Utils.set_token(context.token_admin)
+
 
 @given(u'I have an invalid "{Invalid_Token}" header')
 def step_impl(context, Invalid_Token):
@@ -40,3 +44,4 @@ def step_impl(context, value):
 def step_impl(context, service_name):
     context.service_name = service_name
     Utils.save_response(context.service_name, context.response.json())
+

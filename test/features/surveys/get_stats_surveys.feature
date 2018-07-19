@@ -1,6 +1,7 @@
 @user
 Feature: Users creation CRUD
-   Background: User creation
+
+   Background: Survey creation
     Given I have the Authorization header
       And I add a body request
        """
@@ -44,7 +45,7 @@ Feature: Users creation CRUD
     When I perform a POST  at the service "/surveys"
         And I save the body response as "survey_response"
 
-   @CRUD
+   @CRUD @delete_item @schema_error
    Scenario: get survey stats
     Given I have the Authorization header
     When I perform a GET  at the service "/surveys/{survey_response._id}/stats"
