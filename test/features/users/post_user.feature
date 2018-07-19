@@ -33,7 +33,7 @@ Feature: Users creation CRUD
       And I verify the "user_response" contains values sent on Request
 
    @Negative
-   Scenario Outline: : User creation
+   Scenario Outline: : User negative creation
     Given I have the Authorization header
       And I add a body request
       """
@@ -68,13 +68,22 @@ Feature: Users creation CRUD
         "payload": None
      }
      """
+    Examples: Empty
+      | NAME         | BIRTHDATE                  | GENDER   | PASSWORD | PRIMARYEMAIL          | ROLE    | VALIDATED | MAXTOKENS | USEDTOKENS |
+      | ""           | ""                         | "female" | ""       | ""                    | "admin" | False     | 1         | 1          |
+      | "Valid Name" | ""                         | "female" | "123$    | "knowmauikl@mail.com" | "users" | False     | 1         | 1          |
+      | "Valid Name" | "1994-10-30T04:00:00.000Z" | ""       | "89777$  | "knowmauikl@mail.com" | "admin" | False     | 1         | 1          |
+      | "Valid Name" | "1994-10-30T04:00:00.000Z" | "male"   | ""       | "knowmauikl@mail.com" | "users" | True      | 0         | 0          |
+      | "Valid Name" | "1994-10-30T04:00:00.000Z" | "male"   | "6464$A" | ""                    | "admin" | True      | 0         | 1          |
+      | "Valid Name" | "1994-10-30T04:00:00.000Z" | "male"   | "6464$A" | "kno.8549kl@mail.com" | ""      | True      | 0         | 1          |
+      | "Valid Name" | "1994-10-30T04:00:00.000Z" | "male"   | "6464$A" | "kno.8549kl@mail.com" | "admin" |           | 1         | 0          |
+
     Examples: Invalid
       | NAME         | BIRTHDATE                  | GENDER   | PASSWORD | PRIMARYEMAIL          | ROLE    | VALIDATED | MAXTOKENS | USEDTOKENS |
       | "Valid Name" | ""                         | "female" | ""       | ""                    | "admin" | False     | 1         | 1          |
       | "Valid Name" | "1994-10-30T04:00:00.000Z" | "female" | "Pass123"| "emaiil.246@mail.com" | "roles" | 0         | 1         | 1          |
       | "Valid Name" | "1994-10-30T04:00:00.000Z" | "female" | "Pass123"| "emaiil.246@mail.com" | "admin" | 0         | 1         | 1          |
       | "1234687898" | "1994-10-50T04:00:00.000Z" | "gender" | "Pass123"| "emaiil.246.mail.com" | "roles" | True      | -1        | -1         |
-
 
    @Negative
    Scenario Outline: : User creation with existing mail
