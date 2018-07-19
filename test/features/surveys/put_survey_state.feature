@@ -1,7 +1,6 @@
-Feature: Must not to GET a Survey Shared with invalid inputs
-  The feature must not to get a request with invalid inputs
-  at the service /surveys/surveys/{SurveyId}/sharedWith
-
+Feature: Changes the state of a survey based on the request body
+  The feature changes the state of a survey based on the request body
+  /surveys/{surveyId}/state
 
   Background:Create a new survey
     Given I have the Authorization header
@@ -9,7 +8,7 @@ Feature: Must not to GET a Survey Shared with invalid inputs
      """
      {
          "_id":"",
-         "title":"GET SURVEY SHARED",
+         "title":"CHANGE STATE",
          "description":"test",
          "audience":0,
          "settings":{
@@ -49,37 +48,22 @@ Feature: Must not to GET a Survey Shared with invalid inputs
     And I get the "id" as "_id"
     Then I expect status code "201"
 
-  @negative @delete_item
-  Scenario Outline: Perform a GET surveys state with an invalid token
-    Given I have an invalid "<Authorization>" header
-    When I perform a GET  at the service "/surveys/surveys/{survey_response._id}/sharedWith"
-    Then I expect status code "403"
-    And I verify the response "survey_response" with the following body
-    """
-    {
-      "details": "User does not have access to survey",
-      "statusCode": 403
-    }
-    """
-    Examples:
-      | Authorization        |
-      | **sdfsdfsdfsdf       |
-      | popl\zpxp\x56+654++6 |
-
-  @negative @delete_item
-  Scenario Outline: Perform a GET surveys state with an invalid survey id
+  @delete_item
+  Scenario Outline: Valid Change
     Given I have the Authorization header
-    When I perform a GET  at the service "/surveys/<Survey Response>/state"
-    Then I expect status code "401"
-    And I verify the response "survey_response" with the following body
+    And I add a body request
     """
     {
-        "details": "Not Authorize to continue",
-        "statusCode": 401
+      "state":<State>,
+      "publishNow":False
     }
     """
+    When I perform a PUT  at the service "/surveys/{survey_response._id}/state"
+    Then I expect status code "200"
     Examples:
-      | Survey Response |
-      | abcdefghi       |
-      | *-++*-98595     |
-      | not valid       |
+      | State |
+      | 0     |
+      | 1     |
+      | 2     |
+
+

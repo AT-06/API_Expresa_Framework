@@ -1,6 +1,6 @@
 Feature: Not Create Survey With Invalid Inputs
-  It could not be possible to create a survey with valid
-  input from the body
+  It could not be possible to create a survey with invalid
+  inputs from the body
 
   Scenario Outline: Create a survey invalid inputs
     Given I have the Authorization header

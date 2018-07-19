@@ -1,6 +1,6 @@
-Feature: Must not to GET a Survey Shared with invalid inputs
+Feature: Must not to GET a Survey State with invalid inputs
   The feature must not to get a request with invalid inputs
-  at the service /surveys/surveys/{SurveyId}/sharedWith
+  at the service /surveys/{surveyId}/state
 
 
   Background:Create a new survey
@@ -9,7 +9,7 @@ Feature: Must not to GET a Survey Shared with invalid inputs
      """
      {
          "_id":"",
-         "title":"GET SURVEY SHARED",
+         "title":"GET SURVEY STATE",
          "description":"test",
          "audience":0,
          "settings":{
@@ -52,7 +52,7 @@ Feature: Must not to GET a Survey Shared with invalid inputs
   @negative @delete_item
   Scenario Outline: Perform a GET surveys state with an invalid token
     Given I have an invalid "<Authorization>" header
-    When I perform a GET  at the service "/surveys/surveys/{survey_response._id}/sharedWith"
+    When I perform a GET  at the service "/surveys/{survey_response._id}/state"
     Then I expect status code "403"
     And I verify the response "survey_response" with the following body
     """
