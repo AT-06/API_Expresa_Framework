@@ -1,3 +1,4 @@
+@Constraints
 Feature: Constraints of surveys
 
   Background: Survey creation
@@ -42,8 +43,8 @@ Feature: Constraints of surveys
      }
      """
     When I perform a POST  at the service "/surveys"
-    # And I save the body response as "survey_response"
 
+    @Smoke
     Scenario: Perform constraints smoke test for survey
       Given I have the Authorization header
       When I perform a GET  at the service "/constraints/survey"

@@ -42,14 +42,3 @@ def step_impl(context, status_code):
 def step_impl(context):
     print("********************************")
 
-# Make this step generic for nested keys needed in tests
-@given(u'I save "{key}" in "{variable}"')
-def step_impl(context, key, variable):
-    context.variable = variable
-    context.key_needed = Utils.get_response_nested_value(key)
-@when(u'I perform a {method} at the service "{service}"')
-def step_impl(context, method, service):
-    context.service = service.replace(context.variable, context.key_needed)
-    context.method = method
-    context.end_point = Utils.build_end_point(context.url, context.service)
-    context.response = ex.execute(context.method, context.end_point)

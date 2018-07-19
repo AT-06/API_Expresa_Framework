@@ -21,7 +21,7 @@ def step_impl(context, field, field_value, table, where_field, where_value):
     Utils.set_id(context.user_id)
     db.update_mongo_db(context.table, {context.field: context.field_value}, context.where_field, context.user_id, context.mongo_connection)
 
-@then(u'I validate "{response}" of service "{service}" with table "{table}" where "{field}" is "{field_value}"')
+@step(u'I validate "{response}" of service "{service}" with table "{table}" where "{field}" is "{field_value}"')
 def step_impl(context, response, table, field, field_value, service):
     context.field = field
     context.field_value = field_value
