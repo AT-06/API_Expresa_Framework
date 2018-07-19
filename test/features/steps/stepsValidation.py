@@ -18,7 +18,7 @@ def step_impl(context, schema, response):
     expect(resp.validate_schema_response("{}/{}".format(context.service, context.schema))).to_be_truthy()
 
 
-@then(u'I verify the "{response}" contains body values')
+@then(u'I verify the "{response}" contains values sent on Request')
 def step_impl(context, response):
     resp = ResponseManager(Utils.responses.get(response))
     expect(resp.validate_response_contain_body(ex.get_body())).to_be_truthy()
