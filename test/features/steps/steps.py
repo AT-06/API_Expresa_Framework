@@ -17,7 +17,7 @@ def step_impl(context, Invalid_Token):
     Utils.set_token(context.Invalid_Token)
 
 
-@given(u'I add a body request')
+@step(u'I add a body request')
 def step_impl(context):
     body_evaluate = Utils.build_body(ast.literal_eval(context.text), context._id)
     ex.add_body(body_evaluate)
