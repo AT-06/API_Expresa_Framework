@@ -1,7 +1,8 @@
 @Constraints
 Feature: Users creation CRUD
-   Background: User creation
-    Given I have the Authorization header
+
+   Background: Survey creation
+    Given I have the Authorization header for administrator
       And I add a body request
        """
        {
@@ -40,11 +41,11 @@ Feature: Users creation CRUD
          "actionTokensCost":0,
          "fastpass":""
        }
-      """
+       """
     When I perform a POST  at the service "/surveys"
         And I save the body response as "survey_response"
 
-    Given I have the Authorization header
+    Given I have the Authorization header for administrator
         And I add a body request
          """
          {
@@ -58,9 +59,9 @@ Feature: Users creation CRUD
     When I perform a PUT  at the service "/constraints/survey"
     Then I expect status code "200"
 
-   @CRUD
+   @CRUD @delete_item
    Scenario: Get cost of last survey
-      Given I have the Authorization header
+      Given I have the Authorization header for administrator
       When I perform a GET  at the service "/constraints/survey"
           And I save the body response as "constraints_response"
       Then I expect status code "200"

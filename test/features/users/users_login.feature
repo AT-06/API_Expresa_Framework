@@ -4,14 +4,14 @@ Feature: Users endpoint smoke test
     And I add a body request
       """
       {
-        "_id":"null",
+        "_id":"",
         "name": "Test Admin JM",
         "birthDate":"1994-10-25T04:00:00.000Z",
         "city":"Cochabamba",
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"maymie18965@mailbox87.de",
+        "primaryEmail":"nnienow606@mailbox87.dexx",
         "role":"user",
         "secondaryEmails":[
 
@@ -33,7 +33,7 @@ Feature: Users endpoint smoke test
     Given I add a body request
       """
       {
-        "email": "maymie18965@mailbox87.de",
+        "email": "nnienow606@mailbox87.dexx",
         "password": "Pass123$",
         "type":0
       }
