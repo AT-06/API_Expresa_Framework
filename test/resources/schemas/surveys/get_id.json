@@ -1,0 +1,132 @@
+{
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "audience": {
+      "type": "integer"
+    },
+    "settings": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "releaseDate": {
+          "type": "string"
+        },
+        "expirationDate": {
+          "type": "string"
+        },
+        "allowedDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "acceptMultipleAnswers": {
+          "type": "boolean"
+        },
+        "allowIncognitoResponses": {
+          "type": "boolean"
+        },
+        "showUsersEmail": {
+          "type": "boolean"
+        },
+        "allowedEmails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requiresLogIn": {
+          "type": "boolean"
+        }
+      }
+    },
+    "state": {
+      "type": "integer"
+    },
+    "creationDate": {
+      "type": "string"
+    },
+    "responseQuantity": {
+      "type": "integer"
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "sequence": {
+            "type": "integer"
+          },
+          "valid": {
+            "type": "boolean"
+          },
+          "max": {
+            "type": "integer"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "default": {
+                  "type": "boolean"
+                },
+                "sequence": {
+                  "type": "integer"
+                },
+                "isValid": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "wasTyped": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "shortUrl": {
+      "type": "string"
+    },
+    "actionTokensCost": {
+      "type": "integer"
+    },
+    "fastpass": {
+      "type": "string"
+    }
+  }
+}
