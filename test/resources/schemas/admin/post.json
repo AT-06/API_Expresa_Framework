@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "birthDate": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "primaryEmail": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "secondaryEmails": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validated": {
+      "type": "boolean"
+    },
+    "actionTokens": {
+      "type": "object",
+      "properties": {
+        "maximumTokens": {
+          "type": "integer"
+        },
+        "usedTokens": {
+          "type": "integer"
+        },
+        "_id": {
+          "type": "string"
+        }
+      }
+    },
+    "__V": {
+      "type": "integer"
+    }
+  }
+}
