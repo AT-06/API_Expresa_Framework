@@ -1,23 +1,23 @@
-@admin
+@Admin
 Feature: Admin endpoint smoke test
   Background: example
     Given I have the Authorization header
     And I add a body request
       """
       {
-        "_id":"null",
-        "name": "Test Admin JM",
+        "_id":"",
+        "name": "Test Admin",
         "birthDate":"1994-10-25T04:00:00.000Z",
         "city":"Cochabamba",
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"maymie18965@mailbox87.de",
+        "primaryEmail":"megane86842@mailbox87.de",
         "role":"user",
         "secondaryEmails":[
 
         ],
-        "validated":False,
+        "validated":True,
         "actionTokens":{
            "maximumTokens":100,
            "usedTokens":0
@@ -28,11 +28,10 @@ Feature: Admin endpoint smoke test
     And I save the body response as "user_response"
     Then I update the "role" to "admin" in "users" where "_id" is "user_response._id"
     And I update the "validated" to "true" in "users" where "_id" is "user_response._id"
-
-    Given I add a body request
+    And I add a body request
       """
       {
-        "email": "maymie18965@mailbox87.de",
+        "email": "megane86842@mailbox87.de",
         "password": "Pass123$",
         "type":0
       }
@@ -46,14 +45,14 @@ Feature: Admin endpoint smoke test
     And I add a body request
     """
     {
-        "_id":"null",
+        "_id":"",
         "name": "John Doe",
         "birthDate":"1994-10-25T04:00:00.000Z",
         "city":"Cochabamba",
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"cartwright.vince830@mailbox87.de",
+        "primaryEmail":"tyra.schamberger724@mailbox87.de",
         "role":"user",
         "secondaryEmails":[
 

@@ -1,46 +1,46 @@
+@Users
 Feature: Users endpoint smoke test
-   Background: example
-    Given I have the Authorization header
-    And I add a body request
-      """
-      {
-        "_id":"",
-        "name": "Test Admin JM",
-        "birthDate":"1994-10-25T04:00:00.000Z",
-        "city":"Cochabamba",
-        "country":"Bolivia",
-        "gender":"male",
-        "password": "Pass123$",
-        "primaryEmail":"nnienow606@mailbox87.dexx",
-        "role":"user",
-        "secondaryEmails":[
-
-        ],
-        "validated":False,
-        "actionTokens":{
-           "maximumTokens":100,
-           "usedTokens":0
-        }
-      }
-      """
-    When I perform a POST  at the service "/users"
-    And I save the body response as "user_response"
-    Then I update the "role" to "admin" in "users" where "_id" is "user_response._id"
-    Then I update the "validated" to "true" in "users" where "_id" is "user_response._id"
 
   @Smoke
   Scenario: Perform users smoke test for service login
-    Given I add a body request
+    Given I have the Authorization header
+      And I add a body request
       """
       {
-        "email": "nnienow606@mailbox87.dexx",
+        "email": "brook23259@mailbox92.biz",
         "password": "Pass123$",
         "type":0
       }
       """
     When I perform a POST  at the service "/users/login"
-    And I save the body response as "user_token"
+     And I save the body response as "user_token"
+    Then I expect status code "200"
 
 
-
-
+  @Negative
+  Scenario Outline: Perform users login with invalid body request
+    Given I have the Authorization header
+      And I add a body request
+      """
+      {
+        "email": <EMAIL>,
+        "password": <PASSWORD>,
+        "type":<TYPE>
+      }
+      """
+    When I perform a POST  at the service "/users/login"
+      And I save the body response as "user_token"
+    Then I expect status code "401"
+     And I verify the response "user_token" with the following body
+     """
+     {
+        "statusCode": 401,
+        "details": "Invalid email or password",
+        "payload": None
+     }
+     """
+    Examples: Invalid
+      | EMAIL                       | PASSWORD   | TYPE |
+      | "brook23259@mailbox92.biz"  | "Pass123"  | 0    |
+      | "brook23259@mailbox91.biz"  | "Pass123"  | 0    |
+      | "brook23259@mailbox91.biz"  | "Pass123$" | 0    |
