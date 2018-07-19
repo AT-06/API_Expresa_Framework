@@ -38,11 +38,13 @@ Feature: Users actionTokens endpoint smoke test
     When I perform a POST  at the service "/users/login"
     And I save the body response as "user_token"
 
-#  Scenario: Perform users smoke test for service users
-#    Given I use "user_token.authToken" for Authorization header
-#    When I perform a GET  at the service "/users"
-#    Then I expect status code "200"
+  @Smoke
+  Scenario: Perform users smoke test for service users
+    Given I use "user_token.authToken" for Authorization header
+    When I perform a GET  at the service "/users"
+    Then I expect status code "200"
 
+  @Smoke
   Scenario: Perform users get validation with db for service users
     Given I use "user_token.authToken" for Authorization header
     When I perform a GET  at the service "/users"

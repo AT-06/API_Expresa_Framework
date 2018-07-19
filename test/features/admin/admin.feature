@@ -1,3 +1,4 @@
+@admin
 Feature: Admin endpoint smoke test
   Background: example
     Given I have the Authorization header
@@ -11,7 +12,7 @@ Feature: Admin endpoint smoke test
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"celine36706@mailbox87.de",
+        "primaryEmail":"maymie18965@mailbox87.de",
         "role":"user",
         "secondaryEmails":[
 
@@ -26,11 +27,12 @@ Feature: Admin endpoint smoke test
     When I perform a POST  at the service "/users"
     And I save the body response as "user_response"
     Then I update the "role" to "admin" in "users" where "_id" is "user_response._id"
-    Then I update the "validated" to "true" in "users" where "_id" is "user_response._id"
+    And I update the "validated" to "true" in "users" where "_id" is "user_response._id"
+
     Given I add a body request
       """
       {
-        "email": "celine36706@mailbox87.de",
+        "email": "maymie18965@mailbox87.de",
         "password": "Pass123$",
         "type":0
       }
@@ -38,7 +40,7 @@ Feature: Admin endpoint smoke test
     When I perform a POST  at the service "/users/login"
     And I save the body response as "user_token"
 
-
+  @Smoke
   Scenario: Perform admin smoke test
     Given I use "user_token.authToken" for Authorization header
     And I add a body request
@@ -51,7 +53,7 @@ Feature: Admin endpoint smoke test
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"curtis.metz796@mailbox87.de",
+        "primaryEmail":"cartwright.vince830@mailbox87.de",
         "role":"user",
         "secondaryEmails":[
 
@@ -65,4 +67,4 @@ Feature: Admin endpoint smoke test
     """
     When I perform a POST  at the service "/admin/users"
     And I save the body response as "admin_response"
-    Then I expect status code "200"
+    Then I expect status code "201"

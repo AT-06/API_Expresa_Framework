@@ -31,6 +31,19 @@ class DBManager:
         result = collections.update_one({where_field: ObjectId(where_value)}, {"$set": fields_values})
         return result
 
+    def delete_mongo_db(self, table, where_field, where_value, connection):
+        """Method to update a single record from database.
+        `table` is the table document from record will be retrieved.
+        `field` is the field to update records.
+        `field_value` is the value to update in the field.
+        `where_value` is the value to filter"""
+
+        self.conn = MongoDBConnection(connection)
+        db = self.conn.get_connection()
+        collections = db[table]
+        result = collections.delete_one({where_field:ObjectId(where_value)})
+        # result = collections.delete_many({})
+        return result
 
     def select_cassandra(self, table, field, field_value):
         """Method to select a single record from database.

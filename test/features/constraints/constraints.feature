@@ -11,7 +11,7 @@ Feature: Constraints endpoint smoke test
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"wfisher236@mailbox87.de",
+        "primaryEmail":"maymie18965@mailbox87.de",
         "role":"user",
         "secondaryEmails":[
 
@@ -30,7 +30,7 @@ Feature: Constraints endpoint smoke test
     Given I add a body request
       """
       {
-        "email": "wfisher236@mailbox87.de",
+        "email": "maymie18965@mailbox87.de",
         "password": "Pass123$",
         "type":0
       }
@@ -38,6 +38,7 @@ Feature: Constraints endpoint smoke test
     When I perform a POST  at the service "/users/login"
     And I save the body response as "user_token"
 
+  @Smoke
   Scenario: Perform constraints smoke test for maximumTokens
     Given I use "user_token.authToken" for Authorization header
     When I perform a GET  at the service "/constraints/maximumTokens"
