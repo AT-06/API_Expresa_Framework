@@ -11,7 +11,7 @@ Feature: Users endpoint smoke test
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"jgulgowski827@mailbox87.de",
+        "primaryEmail":"maymie18965@mailbox87.de",
         "role":"user",
         "secondaryEmails":[
 
@@ -28,11 +28,12 @@ Feature: Users endpoint smoke test
     Then I update the "role" to "admin" in "users" where "_id" is "user_response._id"
     Then I update the "validated" to "true" in "users" where "_id" is "user_response._id"
 
+  @Smoke
   Scenario: Perform users smoke test for service login
     Given I add a body request
       """
       {
-        "email": "jgulgowski827@mailbox87.de",
+        "email": "maymie18965@mailbox87.de",
         "password": "Pass123$",
         "type":0
       }

@@ -4,7 +4,7 @@ import re
 class Utils:
     responses = {}
     token = ""
-
+    id = ""
     @staticmethod
     def build_end_point(url, service):
         build = []
@@ -38,6 +38,14 @@ class Utils:
     @staticmethod
     def set_token(token):
         Utils.token = token
+
+    @staticmethod
+    def set_id(id):
+        Utils.id = id
+
+    @staticmethod
+    def get_id():
+        return Utils.id
 
     @staticmethod
     def build_header():
