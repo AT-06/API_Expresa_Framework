@@ -129,6 +129,8 @@ Feature: Create user with normal user token
         | 100             |  0          | None           | ""          | "Bolivia" | True       | "signature"   | ""                        | "user"    |"helena_34@mail.yre"| ""         |
         | 100             |  0          | 88             | ""          | "Bolivia" | True       | ""            | "12345678912345l6789"     | "user"    |"helena_34@mail.yre"| ""         |
         | 100             |  0          | "A-Z"          | ""          | "Bolivia" | True       | ""            | "12345678912345l6789"     | ""        |"helena_34@mail.yre"| "test"     |
+        | 100             |  0          | "2018-02-30"   | ""          | "Bolivia" | True       | ""            | "12345678912345l6789"     | ""        |"helena_34@mail.yre"| "test"     |
+        | 100             |  0          | "2028-02-02"   | ""          | "Bolivia" | True       | ""            | "12345678912345l6789"     | ""        |"helena_34@mail.yre"| "test"     |
 
 
 

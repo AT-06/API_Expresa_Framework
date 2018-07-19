@@ -1,7 +1,7 @@
 @admin
 Feature: Users creation CRUD
    @CRUD @delete_user
-   Scenario: : User creation from admin
+   Scenario: User creation from admin
     Given I have the Authorization header for administrator
       And I add a body request
        """
