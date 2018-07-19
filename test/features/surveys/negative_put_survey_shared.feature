@@ -1,6 +1,6 @@
-Feature: Must not to GET a Survey Shared with invalid inputs
+Feature: Must not to GET a Survey State with invalid inputs
   The feature must not to get a request with invalid inputs
-  at the service /surveys/surveys/{SurveyId}/sharedWith
+  at the service /surveys/{id-survey}/sharedWith
 
 
   Background:Create a new survey
@@ -9,7 +9,7 @@ Feature: Must not to GET a Survey Shared with invalid inputs
      """
      {
          "_id":"",
-         "title":"GET SURVEY SHARED",
+         "title":"PUT SURVEY SHARED WITH",
          "description":"test",
          "audience":0,
          "settings":{
@@ -49,27 +49,24 @@ Feature: Must not to GET a Survey Shared with invalid inputs
     And I get the "id" as "_id"
     Then I expect status code "201"
 
-  @negative @delete_item
-  Scenario Outline: Perform a GET surveys state with an invalid token
-    Given I have an invalid "<Authorization>" header
-    When I perform a GET  at the service "/surveys/surveys/{survey_response._id}/sharedWith"
-    Then I expect status code "403"
-    And I verify the response "survey_response" with the following body
-    """
-    {
-      "details": "User does not have access to survey",
-      "statusCode": 403
-    }
-    """
-    Examples:
-      | Authorization        |
-      | **sdfsdfsdfsdf       |
-      | popl\zpxp\x56+654++6 |
 
   @negative @delete_item
-  Scenario Outline: Perform a GET surveys state with an invalid survey id
-    Given I have the Authorization header
-    When I perform a GET  at the service "/surveys/<Survey Response>/state"
+  Scenario Outline: Perform a PUT surveys shared with with an invalid token
+    Given I have an invalid "<Authorization>" header
+    And I add a body request
+    """
+    [
+       {
+          "userEmail":"agv417@gmail.com",
+          "showUserInfo":True,
+          "rights":[
+             0,
+             1
+          ]
+       }
+    ]
+    """
+    When I perform a PUT  at the service "/surveys/{survey_response._id}/sharedWith"
     Then I expect status code "401"
     And I verify the response "survey_response" with the following body
     """
@@ -79,7 +76,40 @@ Feature: Must not to GET a Survey Shared with invalid inputs
     }
     """
     Examples:
-      | Survey Response |
-      | abcdefghi       |
-      | *-++*-98595     |
-      | not valid       |
+      | Authorization        |
+      | **sdfsdfsdfsdf       |
+      | popl\zpxp\x56+654++6 |
+
+  @negative @delete_item
+  Scenario Outline: Perform a PUT surveys shared with with an invalid token
+    Given I have the Authorization header
+    And I add a body request
+    """
+    [
+       {
+          "userEmail":<EMAIL>,
+          "showUserInfo":<USER_INFO>,
+          "rights":[
+             0,
+             1
+          ]
+       }
+    ]
+    """
+    When I perform a PUT  at the service "/surveys/{survey_response._id}/sharedWith"
+    Then I expect status code "400"
+    And I verify the response "survey_response" with the following body
+    """
+    {
+      "details": "User does not have access to survey",
+      "statusCode": 403
+    }
+    """
+    Examples:
+      | EMAIL           | USER_INFO |
+      | ""              | True      |
+      | "2569988"       | 78541     |
+      | 147852          | "Issue"   |
+      | False           | TRULY     |
+      |                 | True      |
+      | "test@mail.com" |           |
