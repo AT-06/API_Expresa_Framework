@@ -66,7 +66,8 @@ class Utils:
 
     @staticmethod
     def build_body(body, id):
-        if body["_id"] != "":
-            body["_id"] = id
-            return body
+        if "_id" in body:
+            if body["_id"] != "":
+                body["_id"] = id
+                return body
         return body
