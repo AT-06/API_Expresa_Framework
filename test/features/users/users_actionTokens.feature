@@ -11,7 +11,7 @@ Feature: Users actionTokens endpoint smoke test
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"ezekiel21974@mailbox87.de",
+        "primaryEmail":"maymie18965@mailbox87.de",
         "role":"user",
         "secondaryEmails":[
 
@@ -30,7 +30,7 @@ Feature: Users actionTokens endpoint smoke test
     Given I add a body request
       """
       {
-        "email": "ezekiel21974@mailbox87.de",
+        "email": "maymie18965@mailbox87.de",
         "password": "Pass123$",
         "type":0
       }
@@ -38,7 +38,7 @@ Feature: Users actionTokens endpoint smoke test
     When I perform a POST  at the service "/users/login"
     And I save the body response as "user_token"
 
-
+  @Smoke
   Scenario: Perform users smoke test for service actionTokens
     Given I use "user_token.authToken" for Authorization header
     And I save "user_token.user._id" in "user_id"
