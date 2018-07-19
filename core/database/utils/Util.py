@@ -3,6 +3,7 @@ from core.database.DBManager import *
 from bson.objectid import ObjectId
 from core.database.resources.users_get_relations import relation as user_relation
 from core.database.resources.surveys_get_relation import relation as survey_relation
+from core.database.resources.constraints_get_relation import relation as constraints_relation
 from datetime import datetime
 
 class Util:
@@ -27,6 +28,8 @@ class Util:
             self.iterate_json(user_relation)
         elif service == "surveys":
             self.iterate_json(survey_relation)
+        elif service == "constraints":
+            self.iterate_json(constraints_relation)
         relation_list = self.query_as_list
         return self.change_relation(query_final, response_final, relation_list)
 

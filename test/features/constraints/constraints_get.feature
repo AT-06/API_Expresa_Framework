@@ -1,4 +1,4 @@
-@user
+@users
 Feature: Users creation CRUD
    Background: User creation
     Given I have the Authorization header
@@ -44,15 +44,29 @@ Feature: Users creation CRUD
     When I perform a POST  at the service "/surveys"
         And I save the body response as "survey_response"
 
-   @CRUD
-   Scenario: get survey stats
     Given I have the Authorization header
-    When I perform a GET  at the service "/surveys/{survey_response._id}/stats"
-          And I save the body response as "stats_response"
+        And I add a body request
+         """
+         {
+	        "surveyCosts":{
+	          "survey": 5,
+	          "question": 6,
+	          "publish": 7
+	        }
+         }
+         """
+    When I perform a PUT  at the service "/constraints/survey"
     Then I expect status code "200"
-         And I verify the "stats_response" has a valid GET_STATS schema
-         And I verify the "stats_response" contains values sent on Request
-         And I validate "stats_response" of service "surveys" with table "surveys" where "_id" is "stats_response._id"
+
+   @CRUD
+   Scenario: Get cost of last survey
+      Given I have the Authorization header
+      When I perform a GET  at the service "/constraints/survey"
+          And I save the body response as "constraints_response"
+      Then I expect status code "200"
+          And I verify the "constraints_response" has a valid GET schema
+          And I verify the "constraints_response" contains values sent on Request
+          And I validate "constraints_response" of service "constraints" with table "survey_costs" where "_id" is "constraints_response._id"
 
 
 
