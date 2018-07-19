@@ -5,6 +5,7 @@ class Utils:
     responses = {}
     token = ""
     id = ""
+
     @staticmethod
     def build_end_point(url, service):
         build = []
@@ -53,7 +54,6 @@ class Utils:
         headers = {"Authorization": token}
         return headers
 
-
     @staticmethod
     def get_response_value(name):
         response_name, field = name.split(".")
@@ -63,3 +63,10 @@ class Utils:
     def get_response_nested_value(name):
         response_name, parent, field = name.split(".")
         return Utils.responses[response_name][parent][field]
+
+    @staticmethod
+    def build_body(body, id):
+        if body["_id"] != "":
+            body["_id"] = id
+            return body
+        return body

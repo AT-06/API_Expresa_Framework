@@ -15,6 +15,6 @@ Feature: Not Create Survey With Invalid Token
     Given I have the Authorization header
     When I perform a GET  at the service "/surveys"
     Then I expect status code "200"
-    #add any account without surveys
+
 
 
