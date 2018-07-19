@@ -42,3 +42,8 @@ def after_scenario(context, scenario):
         context.endpoint_surveys = "{}/{}".format("/surveys", context._id)
         build_endpoint = Utils.build_end_point(context.url, context.endpoint_surveys)
         response = ex.execute('DELETE', build_endpoint)
+
+    if 'delete_user' in scenario.tags:
+        context.endpoint_adminUser = "{}/{}".format("/admin/users", context._id)
+        build_endpoint = Utils.build_end_point(context.url, context.endpoint_adminUser)
+        response = ex.execute('DELETE', build_endpoint)
