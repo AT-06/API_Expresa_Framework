@@ -7,7 +7,7 @@ Feature: Verify the creation of a survey
      """
      {
          "_id":"",
-         "title":"test 123456",
+         "title":"HOLAAAA",
          "description":"test",
          "audience":0,
          "settings":{
