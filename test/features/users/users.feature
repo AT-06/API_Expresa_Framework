@@ -11,7 +11,7 @@ Feature: Users actionTokens endpoint smoke test
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"gwen.reinger885@mailbox92.biz",
+        "primaryEmail":"gwen.reinger885g@maiwlbox92.biz",
         "role":"user",
         "secondaryEmails":[
 
@@ -30,7 +30,7 @@ Feature: Users actionTokens endpoint smoke test
     Given I add a body request
       """
       {
-        "email": "gwen.reinger885@mailbox92.biz",
+        "email": "gwen.reinger885g@maiwlbox92.biz",
         "password": "Pass123$",
         "type":0
       }

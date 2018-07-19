@@ -1,10 +1,10 @@
-Feature: Verify user account
-
-  Background: Survey creation
+@user
+Feature: Users creation CRUD
+   Background: User creation
     Given I have the Authorization header
-    And I add a body request
-     """
-     {
+      And I add a body request
+       """
+       {
          "_id":"",
          "title":"test 123456",
          "description":"test",
@@ -39,13 +39,20 @@ Feature: Verify user account
          "shortUrl":"",
          "actionTokensCost":0,
          "fastpass":""
-     }
-     """
+       }
+      """
     When I perform a POST  at the service "/surveys"
-    And I save the body response as "survey_response"
-    Then I expect status code "201"
-    And I verify the "survey_response" has a valid POST schema
+        And I save the body response as "survey_response"
 
+   @CRUD
+   Scenario: get survey stats
+    Given I have the Authorization header
+    When I perform a GET  at the service "/surveys/{survey_response._id}/stats"
+          And I save the body response as "stats_response"
+    Then I expect status code "200"
+         And I verify the "stats_response" has a valid GET_STATS schema
+         And I verify the "stats_response" contains values sent on Request
+         And I validate "stats_response" of service "surveys" with table "surveys" where "_id" is "stats_response._id"
 
 
 

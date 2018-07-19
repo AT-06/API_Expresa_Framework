@@ -1,7 +1,10 @@
+@users
 Feature: Users creation CRUD
+
+   @CRUD
    Scenario: : User creation
     Given I have the Authorization header
-    And I add a body request
+      And I add a body request
       """
       {
         "_id":"null",
@@ -24,8 +27,8 @@ Feature: Users creation CRUD
       }
       """
     When I perform a POST  at the service "/users"
-    And I save the body response as "user_response"
+      And I save the body response as "user_response"
     Then I expect status code "201"
-    And I verify the "user_response" has a valid POST schema
-    And I verify the "user_response" contains body values
+      And I verify the "user_response" has a valid POST schema
+      And I verify the "user_response" contains values sent on Request
 
