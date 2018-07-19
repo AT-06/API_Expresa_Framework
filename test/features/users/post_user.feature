@@ -14,7 +14,7 @@ Feature: Users creation CRUD
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"jgfulgowski827@mailbox87.de",
+        "primaryEmail":"jgfulgowski666@mailbox87.de",
         "role":"user",
         "secondaryEmails":[
 

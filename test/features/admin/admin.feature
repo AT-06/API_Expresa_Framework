@@ -12,7 +12,7 @@ Feature: Admin endpoint smoke test
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"ghills884@mailbox52.ga",
+        "primaryEmail":"megane86842@mailbox87.de",
         "role":"user",
         "secondaryEmails":[
 
@@ -31,7 +31,7 @@ Feature: Admin endpoint smoke test
     And I add a body request
       """
       {
-        "email": "ghills884@mailbox52.ga",
+        "email": "megane86842@mailbox87.de",
         "password": "Pass123$",
         "type":0
       }
@@ -52,7 +52,7 @@ Feature: Admin endpoint smoke test
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"theo66782@mailbox87.de",
+        "primaryEmail":"tyra.schamberger724@mailbox87.de",
         "role":"user",
         "secondaryEmails":[
 

@@ -13,7 +13,7 @@ Feature: Users endpoint smoke test
         "country":"Bolivia",
         "gender":"male",
         "password": "Pass123$",
-        "primaryEmail":"nnienow606@mailbox87.dexx",
+        "primaryEmail":"nnienow666@mailbox87.dexx",
         "role":"user",
         "secondaryEmails":[
 
@@ -35,7 +35,7 @@ Feature: Users endpoint smoke test
     Given I add a body request
       """
       {
-        "email": "nnienow606@mailbox87.dexx",
+        "email": "nnienow666@mailbox87.dexx",
         "password": "Pass123$",
         "type":0
       }
