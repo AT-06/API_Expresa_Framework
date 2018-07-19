@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string"
+    },
+    "survey": {
+      "type": "integer"
+    },
+    "question": {
+      "type": "integer"
+    },
+    "publish": {
+      "type": "integer"
+    }
+  }
+}
